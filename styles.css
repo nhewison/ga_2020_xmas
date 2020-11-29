@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+}
+  
+body {
+    padding: 0;
+    margin: 0;
+}
+
+/* header styling*/
+
+.header-band    {
+    padding: 20px;
+    font-size: 40px;
+    margin-left: 10px;
+    color: whitesmoke;
+}
+
+span {
+    margin-left: -40px;
+}
+
+.header-band img {
+    height: 80px;
+    object-fit: contain;
+}
+
+
+/* main body styling */
+
+div {
+    display: block;
+}
+
+#calendar {
+    min-height: 100%;
+    /* overflow: hidden; */
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+}
+
+.calendar-background {
+background-color: black;
+background-image: url("https://s3-eu-central-1.amazonaws.com/org.myadvent.media/images/previews/6660d6a578f3c2afecaeb07ad5cdf43b-background-9d006e597af5eb8d083a44f861976b5a.jpeg");
+}
+
+#calendar .calendar-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 50%;
+}
+
+.container-main {
+    min-height: 100%;
+    padding-bottom: 40px;
+
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.doors-container {
+    position: relative;
+    width: 60vw;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 50px;
+
+    /* border: green 2px solid; */
+}
+
+.door-container-title {
+    color: rgb(225, 225, 225);
+    background-color: black;
+    border: 2px dashed rgb(245, 229, 108);
+    /* padding: 20px; */
+    border-radius: 5px;
+    line-height: 2em;
+    width: 300px;
+    height: 110px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 10px 0 0 10px;
+}
+
+.title-text {
+    font-family: 'Reenie Beanie', cursive;
+    text-align: right;
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+/* boxes */
+
+.door-container {
+    width: 150px;
+    height: 300px;
+    text-align: center;
+    position: relative;
+    margin: 20px;
+}
+
+.door-container:hover {
+    cursor: pointer;
+}
+
+.door-background    {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    z-index: 1;
+    background: rgb(227, 48, 48);
+    opacity: 90%;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px 0 rgb(235, 235, 235) ;
+    position: absolute;
+    top: 0;
+    color: white;
+    font-family: 'Alfa Slab One', cursive;
+}
+
+.door-number    {
+    margin-top: 40%;
+}
+
+.door-background:hover {
+    zoom: 110%;
+}
+
+.door-present-content{
+    /* background: whitesmoke; */
+    /* border: 2px rgb(140, 140, 140) solid; */
+    /* height: 200px; */
+    /* width: 150px; */
+    border-radius: 10px;
+    /* z-index: 0; */
+    /* position: cover; */
+    /* display: none; */
+    /* border: green solid 2px; */
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+p {
+    /* background-color: peachpuff; */
+    font-size: 12px;
+    font-weight: light;
+    margin: 0px;
+}
+
+h2 {
+    color: rgb(75, 75, 75);
+    /* background-color: rgb(227, 227, 227); */
+    /* border-radius: 5px; */
+    /* margin: 5px; */
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+/* .door-present-content:hover {
+    zoom: 110%;
+} */
+
+
+.hidden {
+    display: none;
+}
+
+.focus {
+    width: 300px;
+    height: 400px;
+}
+
+.polaroid {
+    height: 410px;
+    width: 350px;
+    background-image: url("./Images/polaroid.png");
+    /* border: rgb(27, 41, 204) 2px solid; */
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.polaroid-content {
+    transform: translate(0px, -20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.polaroid-content > .polaroid-image-container > img { 
+    height: 200px;
+    width: 200px;
+    transform: translate(0, 20px);
+}
+
+.polaroid-content > .polaroid-image-container > p { 
+    transform: translate(0, 40px);
+    width: 80%;
+}
+
+
+.polaroid-name {
+    height: 20%;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 30px;
+} 
+
+.polaroid-image-container {
+    height: 80%;
+    width: 100%;
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
