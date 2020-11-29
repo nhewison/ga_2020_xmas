@@ -55,50 +55,101 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const doorContainers = document.querySelectorAll('.door-container')
 
-
-// Cick function for fade in and out
-
+  const doorContainersInfo = []
   doorContainers.forEach(container => {
-    let isContentShown = false
+    const data = {
+      number: Number(container.children[1].textContent),
+      element: container,
+      isContentShown: false,
+    }
+    return doorContainersInfo.push(data)
+  })
 
-    container.addEventListener('click', () => {
-      const doorBackground = container.children[1]
+  doorContainersInfo.forEach(obj => {
+    // Click function for fade in and out
+    obj.element.addEventListener('click', () => handleDoorChange(obj, true))
+  })
+
+  function handleDoorChange(obj, polaroid = false) {
+    const container = obj.element
+    const doorBackground = container.children[1]
+    const doorPresentContent = container.children[0]
+    const doorImageContainer = doorPresentContent.children[0]
+    const doorName = doorPresentContent.children[1]
+
+    if (!obj.isContentShown) {
+      if (polaroid) {
+        unmakeAsPolaroidOnAll()
+        makeAsPolaroid(container, doorPresentContent, doorImageContainer, doorName)
+      }
+      showContent(doorBackground, doorPresentContent)
+    }
+
+    else {
+      if (polaroid) {
+        unmakeAsPolaroid(container, doorPresentContent, doorImageContainer, doorName)
+      }
+      unshowContent(doorBackground, doorPresentContent)
+    }
+
+    obj.isContentShown = !obj.isContentShown
+  }
+
+  function showContent(doorBackground, doorPresentContent) {
+    doorBackground.classList.remove('animate__fadeIn')
+    doorBackground.classList.add('animate__fadeOut')
+    doorPresentContent.classList.remove('hidden')
+    doorPresentContent.classList.remove('animate__fadeOut')
+    doorPresentContent.classList.add('animate__fadeIn')
+  }
+
+  function unshowContent(doorBackground, doorPresentContent) {
+    doorPresentContent.classList.remove('animate__fadeIn')
+    doorPresentContent.classList.add('animate__fadeOut')
+    doorBackground.classList.remove('animate__fadeOut')
+    doorBackground.classList.add('animate__fadeIn')
+  }
+
+  function makeAsPolaroid(container, doorPresentContent, doorImageContainer, doorName) {
+    container.classList.add('polaroid')
+    doorPresentContent.classList.add('polaroid-content')
+    doorImageContainer.classList.add('polaroid-image-container')
+    doorName.classList.add('polaroid-name')
+  }
+
+  function unmakeAsPolaroid(container, doorPresentContent, doorImageContainer, doorName) {
+    container.classList.remove('polaroid')
+    doorPresentContent.classList.remove('polaroid-content')
+    doorImageContainer.classList.remove('polaroid-image-container')
+    doorName.classList.remove('polaroid-name')
+  }
+
+  function unmakeAsPolaroidOnAll() {
+    doorContainersInfo.forEach(obj => {
+      const container = obj.element
       const doorPresentContent = container.children[0]
       const doorImageContainer = doorPresentContent.children[0]
       const doorName = doorPresentContent.children[1]
-
-      if (!isContentShown) {
-        container.classList.add('polaroid')
-        doorBackground.classList.remove('animate__fadeIn')
-        doorBackground.classList.add('animate__fadeOut')
-        doorPresentContent.classList.remove('hidden')
-        doorPresentContent.classList.remove('animate__fadeOut')
-        doorPresentContent.classList.add('animate__fadeIn')
-        doorPresentContent.classList.add('polaroid-content')
-        doorImageContainer.classList.add('polaroid-image-container')
-        doorName.classList.add('polaroid-name')
-      }
-
-      else {
-        container.classList.remove('polaroid')
-        doorPresentContent.classList.remove('animate__fadeIn')
-        doorPresentContent.classList.add('animate__fadeOut')
-        doorBackground.classList.remove('animate__fadeOut')
-        doorBackground.classList.add('animate__fadeIn')
-        doorPresentContent.classList.remove('polaroid-content')
-        doorImageContainer.classList.remove('polaroid-image-container')
-        doorName.classList.remove('polaroid-name')
-      }
-
-      isContentShown = !isContentShown
-
+      unmakeAsPolaroid(container, doorPresentContent, doorImageContainer, doorName)
     })
-  })
+  }
 
-// Show boxes of dates already passed
+  // Show boxes of dates already passed
+  function openPastDoors() {
+    const date = new Date()
+    const previousDay = date.getDate() - 1
 
-
-
+    if (previousDay) {
+      const previousDays = Array.from(new Array(previousDay), (x, i) => i + 1)
+      
+      doorContainersInfo.forEach(obj => {
+        if (previousDays.includes(obj.number)) {
+          handleDoorChange(obj)
+        }
+      })
+    }
+  }
+  openPastDoors()
 
   // Create an array of DOM Elements with the class `door-background`
   // const doorBackgrounds = document.querySelectorAll('.door-background')
