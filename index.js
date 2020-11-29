@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
     { number: '19', img: './Images/SOM.png', text: '"Who wore it best?"', name:'- you decide' },
     { number: '20', img: './Images/BT.png', text: '"Again...Who wore it best though?"', name:'- you must decide' },
     { number: '21', img: './Images/GREY.png', text: '"Cmon now...Who REALLY wore it best?"', name:'- too hard to decide' },
-    { number: '22', img: './Images/AK.jpg', text: 'I love that GA is full of "do-ers" who arent afraid to take risk. Ive learned a lot from this team because I know they are all trying too, instead of sitting at the sidelines. Quote by Brene Brown', name:'- Anna' },
+    { number: '22', img: './Images/AK.png', text: 'I love that GA is full of "do-ers" who arent afraid to take risk. Ive learned a lot from this team because I know they are all trying too, instead of sitting at the sidelines. Quote by Brene Brown', name:'- Anna' },
     { number: '23', img: './Images/JDB.png', text: '"Who likes to party?"', name:'- This guy' },
     { number: '24', img: './Images/JDBS.png', text: '"If the 21st century was a TV show, 2020 would likely be the worst (and most over-the-top) episode. And yet - look at the cast! STELLAR. Thank you everyone for making 2020 a little less crazy and a lot more positive than it could have been. So very grateful for each and every one of you, for your empathy, care, support and friendship. Big virtual hug!"', name:'- JDB' },
   ]
@@ -94,6 +94,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     })
   })
+
+// Show boxes of dates already passed
+
+
+
 
   // Create an array of DOM Elements with the class `door-background`
   // const doorBackgrounds = document.querySelectorAll('.door-background')
