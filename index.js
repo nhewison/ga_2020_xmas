@@ -42,7 +42,6 @@ window.addEventListener('DOMContentLoaded', () => {
       number: Number(container.children[1].textContent),
       element: container,
       isContentShown: false,
-      isPolaroid: false,
     }
     return doorContainersInfo.push(data)
   })
@@ -59,13 +58,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const doorImageContainer = doorPresentContent.children[0]
     const doorTextContent = doorImageContainer.children[1]
     const doorName = doorPresentContent.children[1]
-
-    if (!obj.isContentShown) {
+    
+    if (!obj.isContentShown || onClick) {
       if (onClick) {
         unmakeAsPolaroidOnAll()
         makeAsPolaroid(container, doorPresentContent, doorImageContainer, doorName)
         showText(doorTextContent, doorName)
-        obj.isPolaroid = true
       }
       showContent(doorBackground, doorPresentContent)
     }
@@ -76,11 +74,9 @@ window.addEventListener('DOMContentLoaded', () => {
         removeText(doorTextContent, doorName)
       }
       unshowContent(doorBackground, doorPresentContent)
-
     }
-    if (obj.isPolaroid) {
-      obj.isContentShown = !obj.isContentShown
-    } 
+
+    obj.isContentShown = !obj.isContentShown
   }
 
   function showContent(doorBackground, doorPresentContent) {
@@ -129,7 +125,6 @@ window.addEventListener('DOMContentLoaded', () => {
       const doorImageContainer = doorPresentContent.children[0]
       const doorName = doorPresentContent.children[1]
       const doorTextContent = doorImageContainer.children[1]
-      obj.isPolaroid = false
       removeText(doorTextContent, doorName)
       unmakeAsPolaroid(container, doorPresentContent, doorImageContainer, doorName)
     })
