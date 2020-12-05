@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
     { number: '5', img: './Images/JF.png', text: '“Im a survivor, Im not gonna give up, Im not gonna stop, Im gonna work harder, Im a survivor, Im gonna make it, I will survive, keep on surviving”', name: '- John'},
     { number: '1', img: './Images/MB.png', text: ' "Calm is a superpower"', name: '- Michelle' },
     { number: '7', img: './Images/EM.png', text: '"Dont forget to believe in a little magic!"', name:'- Ellen' },
-    { number: '17', img: './Images/CS.png', text: 'text', name:'name' },
+    { number: '17', img: './Images/AB.png', text: '"Have a dance to this today!"', link: 'https://www.youtube.com/watch?v=jj-oTtHTwVY', name:'- Astrid' },
     { number: '8', img: './Images/FW.png', text: '"Vintage is just overpriced retro" - Somerset Prew (in reference to how to refer to Brexit) ', name:'- Fi' },
     { number: '13', img: './Images/MIN.png', text: '"What do you see? Glass is either half full or half empty.. Either way Im still gonna have another round.".. Merry Christmas and Happy New Year.. see you in 2021!', name:'- Mina' },
     { number: '10', img: './Images/NH.png', text: '"The secret of change is to focus all of your energy, not on fighting the old, but on building the new." - Socrates', name:'- Nat' },
@@ -177,7 +177,8 @@ window.addEventListener('DOMContentLoaded', () => {
     pTag.textContent = doorInfo.text
     pTag.classList.add('hidden')
 
-    const nameTag= document.createElement('h2')
+    // Create a tag and add name
+    const nameTag = document.createElement('h2')
     nameTag.textContent = doorInfo.name
     nameTag.classList.add('hidden')
 
@@ -186,6 +187,7 @@ window.addEventListener('DOMContentLoaded', () => {
     imgContainerElement.appendChild(pTag)
     doorPresentContentElement.appendChild(imgContainerElement)
     doorPresentContentElement.appendChild(nameTag)
+    
 
     // Return the present element
     return doorPresentContentElement
@@ -225,6 +227,43 @@ window.addEventListener('DOMContentLoaded', () => {
     // Adding the new door container to the parent container (Adding it to the DOM)
     return doorsContainer.appendChild(doorContainer)
   }
+
+  // create a function that
+  function removePtagAddAtag(number) { 
+    // Gets info
+    let targetInfo = null 
+    doorsObject.forEach(obj => {
+      if (obj.number === number) {
+        targetInfo = obj
+        return obj
+      }
+    })
+    
+    // Gets the element we want to change
+    let targetObject = null 
+    doorContainersInfo.forEach(obj => {
+      if (obj.number === Number(number)) {
+        targetObject = obj
+        return obj
+      }
+    })
+
+
+    const doorImageContainer = targetObject.element.children[0].children[0]
+    const pTag = targetObject.element.children[0].children[0].children[1]
+
+    pTag.remove()
+
+    const linkTag = document.createElement('a')
+    linkTag.textContent = targetInfo.text
+    linkTag.href = targetInfo.link
+    linkTag.classList.add('hidden')
+
+    doorImageContainer.appendChild(linkTag)
+
+  }
+  removePtagAddAtag('17')
+
   const ga = `
   _____          
  / ____|   /\\    

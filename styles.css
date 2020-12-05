@@ -165,7 +165,7 @@ img {
     border-radius: 10px;
 }
 
-p {
+p, a {
     /* background-color: peachpuff; */
     font-size: 12px;
     font-weight: light;
@@ -220,11 +220,10 @@ h2 {
     transform: translate(0, 20px);
 }
 
-.polaroid-content > .polaroid-image-container > p { 
+.polaroid-content > .polaroid-image-container > p, a { 
     transform: translate(0, 40px);
     width: 80%;
 }
-
 
 .polaroid-name {
     height: 20%;
